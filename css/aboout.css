@@ -334,11 +334,28 @@
             box-shadow: var(--shadow);
             text-align: center;
         }
+        .mission-card:hover {
+            /* transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); */
+            /* transform: scale(1.1);
+            background: rgba(26, 115, 232, 0.2); */
+
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+
+        }
         
         .mission-card i {
             font-size: 2.5rem;
             color: var(--primary);
             margin-bottom: 20px;
+        }
+
+        .mission-card:hover i {
+            transform: scale(1.4);
+            /* color: rgba(5, 66, 146, 0.2); */
+            transition: all 0.3s ease;
         }
         
         .mission-card h3 {
