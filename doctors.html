@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Doctors - TGP Hospital</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <link rel="stylesheet" href="./css/doctors.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-hospital"></i>
+                <a href="index.html"><h1>TGP Hospital</h1></a>
+            </div>
+            
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="service.html">Services</a></li>
+                <li><a href="doctors.html" class="active">Doctors</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="careers.html">Careers</a></li>
+                
+                <div class="mobile-actions">
+                    <a href="#"><button class="btn btn-outline">Login</button></a>
+                    <a href="#"><button class="btn btn-primary">Book Appointment</button></a>
+                </div>
+            </ul>
+            
+            <div class="header-actions desktop-actions">
+                <a href="#"><button class="btn btn-outline">Login</button></a>
+                <a href="#"><button class="btn btn-primary">Book Appointment</button></a>
+            </div>
+        </div>
+        <div class="overlay"></div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="doctors-hero">
+        <div class="container doctors-hero-content">
+            <h2>Our Medical Experts</h2>
+            <p>Meet our team of highly qualified and experienced healthcare professionals dedicated to your well-being.</p>
+        </div>
+    </section>
+
+    <!-- Doctors Content Section -->
+    <section class="doctors-content">
+        <div class="container">
+            <div class="section-title">
+                <h2>Find Your Doctor</h2>
+                <p>Search and filter through our medical specialists to find the right doctor for your needs</p>
+            </div>
+            
+            <!-- Search and Filter Section -->
+            <div class="search-filter">
+                <div class="search-box">
+                    <input type="text" id="doctorSearch" placeholder="Search by doctor name, specialty, or department...">
+                    <button id="searchButton"><i class="fas fa-search"></i></button>
+                </div>
+                
+                <div class="filter-options">
+                    <div class="filter-group">
+                        <label for="specialtyFilter">Specialty</label>
+                        <select id="specialtyFilter">
+                            <option value="">All Specialties</option>
+                            <option value="Cardiology">Cardiology</option>
+                            <option value="Neurology">Neurology</option>
+                            <option value="Orthopedics">Orthopedics</option>
+                            <option value="Pediatrics">Pediatrics</option>
+                            <option value="Dermatology">Dermatology</option>
+                            <option value="Oncology">Oncology</option>
+                            <option value="Gastroenterology">Gastroenterology</option>
+                            <option value="Endocrinology">Endocrinology</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="departmentFilter">Department</label>
+                        <select id="departmentFilter">
+                            <option value="">All Departments</option>
+                            <option value="Cardiology">Cardiology</option>
+                            <option value="Neurology">Neurology</option>
+                            <option value="Orthopedics">Orthopedics</option>
+                            <option value="Pediatrics">Pediatrics</option>
+                            <option value="Emergency">Emergency Medicine</option>
+                            <option value="Surgery">Surgery</option>
+                            <option value="Internal Medicine">Internal Medicine</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="availabilityFilter">Availability</label>
+                        <select id="availabilityFilter">
+                            <option value="">Any Availability</option>
+                            <option value="available">Available This Week</option>
+                            <option value="new">Accepting New Patients</option>
+                            <option value="telehealth">Telehealth Available</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Doctors Grid -->
+            <div class="doctors-grid" id="doctorsGrid">
+                <!-- Doctor cards will be dynamically populated -->
+            </div>
+            
+            <!-- Pagination -->
+            <div class="pagination">
+                <button class="page-btn active">1</button>
+                <button class="page-btn">2</button>
+                <button class="page-btn">3</button>
+                <button class="page-btn">4</button>
+                <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Departments Section -->
+    <section class="departments">
+        <div class="container">
+            <div class="section-title">
+                <h2>Medical Departments</h2>
+                <p>Explore our specialized medical departments and their services</p>
+            </div>
+            
+            <div class="departments-grid">
+                <div class="department-card">
+                    <i class="fas fa-heartbeat"></i>
+                    <h3>Cardiology</h3>
+                    <p>Comprehensive heart care with advanced diagnostic tools and treatment options.</p>
+                </div>
+                
+                <div class="department-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>Neurology</h3>
+                    <p>Expert diagnosis and treatment for disorders of the nervous system.</p>
+                </div>
+                
+                <div class="department-card">
+                    <i class="fas fa-bone"></i>
+                    <h3>Orthopedics</h3>
+                    <p>Treatment for musculoskeletal injuries and conditions with cutting-edge techniques.</p>
+                </div>
+                
+                <div class="department-card">
+                    <i class="fas fa-baby"></i>
+                    <h3>Pediatrics</h3>
+                    <p>Specialized care for children from infancy through adolescence.</p>
+                </div>
+                
+                <div class="department-card">
+                    <i class="fas fa-x-ray"></i>
+                    <h3>Radiology</h3>
+                    <p>Advanced imaging services for accurate diagnosis and treatment planning.</p>
+                </div>
+                
+                <div class="department-card">
+                    <i class="fas fa-stethoscope"></i>
+                    <h3>Internal Medicine</h3>
+                    <p>Comprehensive care for adults, focusing on prevention and treatment of diseases.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="doctors-cta">
+        <div class="container">
+            <h2>Can't Find The Right Doctor?</h2>
+            <p>Our patient care coordinators can help you find the perfect specialist for your healthcare needs.</p>
+            <a href="contact.html"><button class="btn btn-outline" style="background-color: white; color: var(--primary);">Contact Us for Assistance</button></a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>TGP Hospital</h3>
+                    <p>Providing quality healthcare with compassion and innovation since 1998.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="doctors.html">Doctors</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Emergency Care</a></li>
+                        <li><a href="#">Primary Care</a></li>
+                        <li><a href="#">Surgery</a></li>
+                        <li><a href="#">Maternity</a></li>
+                        <li><a href="#">Rehabilitation</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Medical Drive, Health City</li>
+                        <li><i class="fas fa-phone"></i> (+880) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> info@tgphospital.com</li>
+                        <li><i class="fas fa-clock"></i> Open 24/7</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 TGP Hospital. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+<script src="./js/doctors.js"></script>
+</body>
+</html>
