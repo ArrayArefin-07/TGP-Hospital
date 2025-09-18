@@ -1,4 +1,9 @@
 
+        // Home link functionality
+        document.getElementById('homeLink').addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
+
         // Password strength indicator
         const passwordInput = document.getElementById('password');
         const strengthBar = document.getElementById('passwordStrengthBar');
