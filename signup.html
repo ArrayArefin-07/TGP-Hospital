@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - TGP Hospital</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/signup.css">
+
+</head>
+<body>
+    <div class="signup-container">
+        <div class="signup-left">
+            <div class="hospital-logo">
+                <i class="fas fa-hospital"></i>
+                <h1>TGP Hospital</h1>
+            </div>
+            
+            <div class="welcome-text">
+                <h2>Join Our Healthcare Community</h2>
+                <p>Create your TGP Hospital patient portal account to manage your healthcare needs in one convenient place.</p>
+            </div>
+            
+            <ul class="features-list">
+                <li><i class="fas fa-calendar-check"></i> Schedule appointments online</li>
+                <li><i class="fas fa-file-medical"></i> Access your medical records</li>
+                <li><i class="fas fa-comments"></i> Secure messaging with your doctors</li>
+                <li><i class="fas fa-prescription"></i> Request prescription refills</li>
+                <li><i class="fas fa-bell"></i> Receive health reminders</li>
+            </ul>
+        </div>
+        
+        <div class="signup-right">
+            <div class="signup-header">
+                <h2>Create Your Account</h2>
+                <p>Join thousands of patients managing their health with TGP Hospital</p>
+            </div>
+            
+            <form class="signup-form" id="signupForm">
+                <div class="form-row">
+                    <div class="input-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" placeholder="First Name" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" placeholder="Last Name" required>
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" placeholder="Email Address" required>
+                </div>
+                
+                <div class="input-group">
+                    <i class="fas fa-phone"></i>
+                    <input type="tel" placeholder="Phone Number" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" placeholder="Password" required>
+                        <div class="password-strength">
+                            <div class="password-strength-bar" id="passwordStrengthBar"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="Confirm Password" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="input-group">
+                        <i class="fas fa-birthday-cake"></i>
+                        <input type="date" placeholder="Date of Birth">
+                    </div>
+                    
+                    <div class="input-group">
+                        <i class="fas fa-venus-mars"></i>
+                        <select>
+                            <option value="" disabled selected>Gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="terms">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>. I consent to receiving communications from TGP Hospital.</label>
+                </div>
+                
+                <button type="submit" class="signup-button">Create Account</button>
+            </form>
+            
+            <div class="login-link">
+                Already have an account? <a href="login.html">Log in here</a>
+            </div>
+        </div>
+    </div>
+
+<script src="./js/signup.js"></script>
+</body>
+</html>
