@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment - TGP Hospital</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #1a73e8;
+            --primary-dark: #0d5bbb;
+            --secondary: #34a853;
+            --accent: #f9345e;
+            --light: #f8f9fa;
+            --dark: #202124;
+            --text: #3c4043;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --gradient: linear-gradient(135deg, #1a73e8 0%, #34a853 100%);
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Appointment Section Styles */
+        .appointment-section {
+            padding: 80px 0;
+            background: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), 
+                        url('https://images.unsplash.com/photo-1586773860418-d37222d8fce3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1473&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--text);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        
+        .appointment-container {
+            display: flex;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .appointment-info {
+            flex: 1;
+            background: var(--gradient);
+            color: white;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .appointment-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .appointment-info p {
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .benefits-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+        
+        .benefits-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+        
+        .benefits-list i {
+            margin-right: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .appointment-form {
+            flex: 1.5;
+            padding: 40px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e1e5eb;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            outline: none;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.2);
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .btn-primary {
+            width: 100%;
+            padding: 15px;
+            background: var(--gradient);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(26, 115, 232, 0.3);
+            margin-top: 10px;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(26, 115, 232, 0.4);
+        }
+        
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(52, 168, 83, 0.1);
+            border-radius: 10px;
+            margin-top: 20px;
+            color: var(--secondary);
+        }
+        
+        .success-message i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .appointment-container {
+                flex-direction: column;
+            }
+            
+            .appointment-info {
+                padding: 30px;
+            }
+            
+            .appointment-form {
+                padding: 30px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .appointment-info, .appointment-form {
+                padding: 25px;
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .appointment-form {
+            animation: fadeIn 0.8s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Appointment Section -->
+    <section class="appointment-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Book an Appointment</h2>
+                <p>Schedule your visit with our healthcare professionals. We're here to provide you with the best care possible.</p>
+            </div>
+            
+            <div class="appointment-container">
+                <div class="appointment-info">
+                    <h3>Why Book With Us?</h3>
+                    <p>At TGP Hospital, we make it easy to schedule appointments that work with your busy life. Our patient-centered approach ensures you receive the care you need when you need it.</p>
+                    
+                    <ul class="benefits-list">
+                        <li><i class="fas fa-calendar-check"></i> Flexible scheduling options</li>
+                        <li><i class="fas fa-clock"></i> Short waiting times</li>
+                        <li><i class="fas fa-user-md"></i> Expert medical professionals</li>
+                        <li><i class="fas fa-bell"></i> Appointment reminders</li>
+                        <li><i class="fas fa-video"></i> Telemedicine options available</li>
+                    </ul>
+                </div>
+                
+                <div class="appointment-form">
+                    <form id="appointmentForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="department">Department</label>
+                                <select id="department" name="department" required>
+                                    <option value="">Select Department</option>
+                                    <option value="cardiology">Cardiology</option>
+                                    <option value="pediatrics">Pediatrics</option>
+                                    <option value="neurology">Neurology</option>
+                                    <option value="orthopedics">Orthopedics</option>
+                                    <option value="pulmonology">Pulmonology</option>
+                                    <option value="internal-medicine">Internal Medicine</option>
+                                    <option value="dentistry">Dentistry</option>
+                                    <option value="ophthalmology">Ophthalmology</option>
+                                    <option value="dermatology">Dermatology</option>
+                                    <option value="psychiatry">Psychiatry</option>
+                                    <option value="obgyn">Obstetrics & Gynecology</option>
+                                    <option value="radiology">Radiology</option>
+                                    <option value="oncology">Oncology</option>
+                                    <option value="gastroenterology">Gastroenterology</option>
+                                    <option value="ent">ENT (Otolaryngology)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="doctor">Preferred Doctor (Optional)</label>
+                                <select id="doctor" name="doctor">
+                                    <option value="">Any Available Doctor</option>
+                                    <option value="dr-johnson">Dr. Sarah Johnson</option>
+                                    <option value="dr-chen">Dr. Michael Chen</option>
+                                    <option value="dr-rodriguez">Dr. Amanda Rodriguez</option>
+                                    <option value="dr-wilson">Dr. James Wilson</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="appointmentDate">Preferred Date</label>
+                                <input type="date" id="appointmentDate" name="appointmentDate" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="appointmentTime">Preferred Time</label>
+                                <select id="appointmentTime" name="appointmentTime" required>
+                                    <option value="">Select Time</option>
+                                    <option value="09:00">09:00 AM</option>
+                                    <option value="09:30">09:30 AM</option>
+                                    <option value="10:00">10:00 AM</option>
+                                    <option value="10:30">10:30 AM</option>
+                                    <option value="11:00">11:00 AM</option>
+                                    <option value="11:30">11:30 AM</option>
+                                    <option value="13:00">01:00 PM</option>
+                                    <option value="13:30">01:30 PM</option>
+                                    <option value="14:00">02:00 PM</option>
+                                    <option value="14:30">02:30 PM</option>
+                                    <option value="15:00">03:00 PM</option>
+                                    <option value="15:30">03:30 PM</option>
+                                    <option value="16:00">04:00 PM</option>
+                                    <option value="16:30">04:30 PM</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="reason">Reason for Appointment</label>
+                            <textarea id="reason" name="reason" rows="4" placeholder="Please describe the reason for your visit"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary">Book Appointment</button>
+                    </form>
+                    
+                    <div class="success-message" id="successMessage">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>Appointment Request Received!</h3>
+                        <p>We've received your appointment request and will contact you shortly to confirm your visit.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Basic form validation
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const department = document.getElementById('department').value;
+            const appointmentDate = document.getElementById('appointmentDate').value;
+            const appointmentTime = document.getElementById('appointmentTime').value;
+            
+            if (!firstName || !lastName || !email || !phone || !department || !appointmentDate || !appointmentTime) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
+            // Email validation
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                alert('Please enter a valid email address');
+                return;
+            }
+            
+            // Phone validation (basic)
+            const phonePattern = /^[0-9+\-\s()]{10,}$/;
+            if (!phonePattern.test(phone)) {
+                alert('Please enter a valid phone number');
+                return;
+            }
+            
+            // Date validation (cannot be in the past)
+            const selectedDate = new Date(appointmentDate);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            
+            if (selectedDate < today) {
+                alert('Please select a future date for your appointment');
+                return;
+            }
+            
+            // Simulate form submission
+            const submitBtn = this.querySelector('.btn-primary');
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+            submitBtn.disabled = true;
+            
+            // Simulate API call
+            setTimeout(() => {
+                // Show success message
+                this.style.display = 'none';
+                document.getElementById('successMessage').style.display = 'block';
+                
+                // Reset form (optional)
+                // this.reset();
+            }, 2000);
+        });
+        
+        // Set minimum date to today for the date picker
+        document.getElementById('appointmentDate').min = new Date().toISOString().split('T')[0];
+    </script>
+</body>
+</html>
