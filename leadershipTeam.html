@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Leadership Team — TGP Hospital</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="./css/index.css">
+  <link rel="stylesheet" href="./css/leadershipTeam.css">
+</head>
+<body>
+  <!-- header (keeps exact structure from your homepage) -->
+  <header>
+    <div class="container header-container">
+      <div class="logo"><i class="fas fa-hospital"></i><a href="/index.html"><h1>TGP Hospital</h1></a></div>
+      <div class="hamburger"><span></span><span></span><span></span></div>
+      <ul class="nav-menu">
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="service.html">Services</a></li>
+        <li><a href="doctors.html">Doctors</a></li>
+        <li class="dropdown"><a href="/about.html">About Us</a>
+          <ul class="dropdown-menu">
+            <li><a href="history.html">Our History</a></li>
+            <li><a href="/about.html#mission">Mission &amp; Values</a></li>
+            <li><a href="/about.html#leadership">Leadership Team</a></li>
+            <li><a href="career.html">Careers</a></li>
+            <li><a href="/blog.html">Blog &amp; News</a></li>
+            <li><a href="/research.html">Research &amp; Innovation</a></li>
+            <li><a href="/accreditations.html">Accreditations</a></li>
+          </ul>
+        </li>
+        <li><a href="contact.html">Contact</a></li>
+        <div class="mobile-actions"><a href="login.html"><button class="btn btn-outline">Login</button></a><a href="booking.html"><button class="btn btn-primary">Book Appointment</button></a></div>
+      </ul>
+      <div class="header-actions desktop-actions"><a href="login.html"><button class="btn btn-outline">Login</button></a><a href="booking.html"><button class="btn btn-primary">Book Appointment</button></a></div>
+    </div>
+    <div class="overlay"></div>
+  </header>
+
+  <!-- hero -->
+  <section class="hero lead-hero">
+    <div class="container hero-content">
+      <h2>Leadership Team</h2>
+      <p>Meet the clinicians, executives and program leaders guiding TGP Hospital’s strategy, clinical excellence and community impact.</p>
+      <div class="hero-buttons" style="margin-top:12px"><a href="/careers.html"><button class="btn btn-outline">Careers</button></a><a href="/contact.html"><button class="btn btn-primary">Contact Leadership</button></a></div>
+    </div>
+  </section>
+
+  <main class="container section">
+    <!-- featured leader -->
+    <section>
+      <div class="featured">
+        <div class="photo"><img src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60" alt="Chief Executive Officer"></div>
+        <div style="flex:1">
+          <div class="badge">Chief Executive Officer</div>
+          <h2 style="margin:8px 0 6px">Dr. Amina Rahman</h2>
+          <p class="muted">MBBS, MD — Health systems leader with 18+ years of clinical and operational experience. Dr. Rahman oversees TGP’s strategic direction, quality governance and community partnerships.</p>
+          <div style="margin-top:12px"><a class="btn btn-primary" href="mailto:ceo@tgphospital.com">Contact Dr. Rahman</a> <button class="btn btn-outline" id="viewBioCEO">View full bio</button></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- team grid -->
+    <section>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <h3 style="margin:0">Executive & Clinical Leadership</h3>
+        <div class="muted">Core leadership, clinical directors and program heads</div>
+      </div>
+
+      <div class="team-grid" id="teamGrid">
+        <!-- Card: Medical Director -->
+        <article class="team-card" data-id="meddir">
+          <div class="team-photo"><img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Medical Director"></div>
+          <div class="team-role">Medical Director</div>
+          <div class="team-name">Dr. Sarah Johnson</div>
+          <div class="team-creds">MD, FACP</div>
+          <div class="team-bio">Leads clinical governance, quality improvement and physician development programs across the hospital.</div>
+          <div class="team-actions"><button class="btn-ghost" data-profile="meddir">View profile</button><a class="btn-ghost" href="mailto:md@tgphospital.com"><i class="fas fa-envelope"></i></a></div>
+        </article>
+
+        <!-- Card: Chief Nursing Officer -->
+        <article class="team-card" data-id="cno">
+          <div class="team-photo"><img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Chief Nursing Officer"></div>
+          <div class="team-role">Chief Nursing Officer</div>
+          <div class="team-name">Ms. Farzana Begum</div>
+          <div class="team-creds">MSc Nursing, RN</div>
+          <div class="team-bio">Oversees nursing standards, workforce planning and patient safety initiatives across inpatient services.</div>
+          <div class="team-actions"><button class="btn-ghost" data-profile="cno">View profile</button><a class="btn-ghost" href="mailto:nursing@tgphospital.com"><i class="fas fa-envelope"></i></a></div>
+        </article>
+
+        <!-- Card: Head of Surgery -->
+        <article class="team-card" data-id="surg">
+          <div class="team-photo"><img src="https://images.unsplash.com/photo-1580281657521-7c661b33f2b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Head of Surgery"></div>
+          <div class="team-role">Head of Surgery</div>
+          <div class="team-name">Prof. James Wilson</div>
+          <div class="team-creds">MD, FACS</div>
+          <div class="team-bio">Clinical lead for surgical services, with special interest in minimally invasive and trauma surgery.</div>
+          <div class="team-actions"><button class="btn-ghost" data-profile="surg">View profile</button><a class="btn-ghost" href="mailto:surgery@tgphospital.com"><i class="fas fa-envelope"></i></a></div>
+        </article>
+
+        <!-- Card: Head of Research -->
+        <article class="team-card" data-id="research">
+          <div class="team-photo"><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Head of Research"></div>
+          <div class="team-role">Head of Research & Education</div>
+          <div class="team-name">Dr. Michael Chen</div>
+          <div class="team-creds">MD, PhD</div>
+          <div class="team-bio">Dr. Chen leads clinical audits, research collaborations and the hospital's medical education partnerships.</div>
+          <div class="team-actions"><button class="btn-ghost" data-profile="research">View profile</button><a class="btn-ghost" href="mailto:research@tgphospital.com"><i class="fas fa-envelope"></i></a></div>
+        </article>
+
+        <!-- Card: CFO -->
+        <article class="team-card" data-id="cfo">
+          <div class="team-photo"><img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="CFO"></div>
+          <div class="team-role">Chief Finance Officer</div>
+          <div class="team-name">Mr. Mohammad Karim</div>
+          <div class="team-creds">MBA, ACCA</div>
+          <div class="team-bio">Responsible for financial strategy, cost-efficiency programs and capital planning at the hospital.</div>
+          <div class="team-actions"><button class="btn-ghost" data-profile="cfo">View profile</button><a class="btn-ghost" href="mailto:finance@tgphospital.com"><i class="fas fa-envelope"></i></a></div>
+        </article>
+
+        <!-- Card: Head of IT & Digital -->
+        <article class="team-card" data-id="it">
+          <div class="team-photo"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Head of IT"></div>
+          <div class="team-role">Head of IT & Digital</div>
+          <div class="team-name">Ms. Laila Ahmed</div>
+          <div class="team-creds">MSc IT</div>
+          <div class="team-bio">Leads digital transformation, EHR projects and data security initiatives to improve patient pathways and experience.</div>
+          <div class="team-actions"><button class="btn-ghost" data-profile="it">View profile</button><a class="btn-ghost" href="mailto:it@tgphospital.com"><i class="fas fa-envelope"></i></a></div>
+        </article>
+
+        <!-- Card: Head of Community Outreach -->
+        <article class="team-card" data-id="outreach">
+          <div class="team-photo"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60" alt="Outreach Lead"></div>
+          <div class="team-role">Head of Community Outreach</div>
+          <div class="team-name">Mr. Rafique Hussain</div>
+          <div class="team-creds">MPH</div>
+          <div class="team-bio">Coordinates community health camps, prevention programs and partnerships with local NGOs.</div>
+          <div class="team-actions"><button class="btn-ghost" data-profile="outreach">View profile</button><a class="btn-ghost" href="mailto:outreach@tgphospital.com"><i class="fas fa-envelope"></i></a></div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section style="margin-top:20px;text-align:center">
+      <a class="btn btn-outline" href="/docs/leadership-bios.pdf" download><i class="far fa-file-pdf"></i> Download full leadership bios (PDF)</a>
+    </section>
+
+  </main>
+
+  <!-- modal (single modal used for all profiles) -->
+  <div class="modal" id="profileModal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <h3 id="modalName" style="margin:0"></h3>
+        <button class="modal-close" id="modalClose" aria-label="Close">✕</button>
+      </div>
+      <p id="modalRole" style="font-weight:700;color:var(--primary);margin:0 0 8px"></p>
+      <div id="modalContent" style="color:var(--text)"></div>
+      <div style="margin-top:12px"><a id="modalEmail" class="btn btn-outline" href="#"><i class="fas fa-envelope"></i> Contact</a></div>
+    </div>
+  </div>
+
+  <!-- footer (same as your homepage) -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>TGP Hospital</h3>
+          <p>Providing quality healthcare with compassion and innovation since 1998.</p>
+          <div class="social-links"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a></div>
+        </div>
+
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul><li><a href="/about.html">About Us</a></li><li><a href="#">Our Services</a></li><li><a href="#">Doctor Directory</a></li><li><a href="#">Patient Portal</a></li><li><a href="#">Careers</a></li></ul>
+        </div>
+
+        <div class="footer-column">
+          <h3>Services</h3>
+          <ul><li><a href="#">Emergency Care</a></li><li><a href="#">Primary Care</a></li><li><a href="#">Surgery</a></li><li><a href="#">Maternity</a></li><li><a href="#">Rehabilitation</a></li></ul>
+        </div>
+
+        <div class="footer-column">
+          <h3>Contact Us</h3>
+          <ul>
+            <li><i class="fas fa-map-marker-alt"></i> 123 Medical Drive, Health City</li>
+            <li><i class="fas fa-phone"></i> (+880) 123-4567</li>
+            <li><i class="fas fa-envelope"></i> info@tgphospital.com</li>
+            <li><i class="fas fa-clock"></i> Open 24/7</li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright"><p>&copy; 2025 TGP Hospital. All rights reserved.</p></div>
+    </div>
+  </footer>
+
+  <script src="index.js"></script>
+  <script src="./js/leadershipTeam.js"></script>
+
+</body>
+</html>
