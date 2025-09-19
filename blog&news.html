@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TGP Hospital - Blog & News</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <style>
+        /* Additional Blog-specific Styles */
+        .blog-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .blog-content {
+            padding: 80px 0;
+        }
+        
+        .blog-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+        
+        .blog-posts {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+        
+        .blog-post {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+        }
+        
+        .blog-post:hover {
+            transform: translateY(-5px);
+        }
+        
+        .post-image {
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .post-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .blog-post:hover .post-image img {
+            transform: scale(1.05);
+        }
+        
+        .post-content {
+            padding: 30px;
+        }
+        
+        .post-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .post-meta i {
+            color: var(--primary);
+            margin-right: 5px;
+        }
+        
+        .post-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .post-excerpt {
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+        
+        .read-more {
+            display: inline-block;
+            color: var(--primary);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .read-more:hover {
+            color: var(--secondary);
+        }
+        
+        .sidebar {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            height: fit-content;
+        }
+        
+        .sidebar-widget {
+            margin-bottom: 40px;
+        }
+        
+        .sidebar-widget:last-child {
+            margin-bottom: 0;
+        }
+        
+        .sidebar-widget h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light);
+            color: var(--dark);
+        }
+        
+        .categories-list {
+            list-style: none;
+        }
+        
+        .categories-list li {
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .categories-list li:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .categories-list a {
+            color: var(--text);
+            display: flex;
+            justify-content: space-between;
+            transition: color 0.3s;
+        }
+        
+        .categories-list a:hover {
+            color: var(--primary);
+        }
+        
+        .recent-post {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .recent-post:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .recent-post-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .recent-post-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .recent-post-content h4 {
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+        
+        .recent-post-content span {
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        .tags-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .tag {
+            background-color: var(--light);
+            color: var(--text);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        
+        .tag:hover {
+            background-color: var(--primary);
+            color: white;
+            cursor: pointer;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .newsletter-form input {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 50px;
+        }
+        
+        .page-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+            background-color: white;
+            color: var(--text);
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: var(--shadow);
+        }
+        
+        .page-link:hover, .page-link.active {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .blog-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .post-image {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-hospital"></i>
+                <a href="index.html"><h1>TGP Hospital</h1></a>
+            </div>
+            
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="service.html">Services</a></li>
+                <li><a href="doctors.html">Doctors</a></li>
+                
+                <!-- About Us with dropdown -->
+                <li class="dropdown">
+                    <a href="about.html">About Us</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="history.html">Our History</a></li>
+                        <li><a href="mission&values.html">Mission & Values</a></li>
+                        <li><a href="leadershipTeam.html">Leadership Team</a></li>
+                        <li><a href="career.html">Careers</a></li>
+                        <li><a href="blog&news.html">Blog & News</a></li>
+                        <li><a href="research&Innovation.html">Research & Innovation</a></li>
+                        <li><a href="accreditations.html">Accreditations</a></li>
+                    </ul>
+                </li>
+                
+                <li><a href="contact.html">Contact</a></li>
+                
+                <div class="mobile-actions">
+                    <a href="login.html"><button class="btn btn-outline">Login</button></a>
+                    <a href="booking.html"><button class="btn btn-primary">Book Appointment</button></a>
+                </div>
+            </ul>
+            
+            <div class="header-actions desktop-actions">
+                <a href="login.html"><button class="btn btn-outline">Login</button></a>
+                <a href="booking.html"><button class="btn btn-primary">Book Appointment</button></a>
+            </div>
+        </div>
+        <div class="overlay"></div>
+    </header>
+
+    <!-- Blog Hero Section -->
+    <section class="blog-hero">
+        <div class="container hero-content">
+            <h2>Blog & News</h2>
+            <p>Stay updated with the latest health information, medical breakthroughs, and hospital news from TGP Hospital.</p>
+        </div>
+    </section>
+
+    <!-- Blog Content Section -->
+    <section class="blog-content">
+        <div class="container blog-container">
+            <div class="blog-posts">
+                <!-- Blog Post 1 -->
+                <article class="blog-post">
+                    <div class="post-image">
+                        <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80" alt="Breakthrough in Heart Surgery">
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span><i class="far fa-calendar"></i> October 15, 2025</span>
+                            <span><i class="far fa-user"></i> Dr. Sarah Johnson</span>
+                            <span><i class="far fa-folder"></i> Cardiology</span>
+                        </div>
+                        <h3>Breakthrough in Minimally Invasive Heart Surgery</h3>
+                        <p class="post-excerpt">TGP Hospital is proud to announce a new minimally invasive technique for heart valve replacement that reduces recovery time by 40%. Our cardiology team has successfully performed this procedure on 50 patients with remarkable outcomes.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                
+                <!-- Blog Post 2 -->
+                <article class="blog-post">
+                    <div class="post-image">
+                        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Pediatric Health">
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span><i class="far fa-calendar"></i> October 10, 2025</span>
+                            <span><i class="far fa-user"></i> Dr. Amanda Rodriguez</span>
+                            <span><i class="far fa-folder"></i> Pediatrics</span>
+                        </div>
+                        <h3>Preparing Your Child for the Flu Season: A Pediatrician's Guide</h3>
+                        <p class="post-excerpt">With flu season approaching, our pediatric team shares essential tips to protect your children. Learn about vaccination, hygiene practices, and when to seek medical attention for flu symptoms.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                
+                <!-- Blog Post 3 -->
+                <article class="blog-post">
+                    <div class="post-image">
+                        <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1210&q=80" alt="Mental Health">
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span><i class="far fa-calendar"></i> October 5, 2025</span>
+                            <span><i class="far fa-user"></i> Dr. Robert Williams</span>
+                            <span><i class="far fa-folder"></i> Psychiatry</span>
+                        </div>
+                        <h3>The Connection Between Physical Exercise and Mental Health</h3>
+                        <p class="post-excerpt">New research from our psychiatry department reveals compelling evidence about how regular physical activity can reduce symptoms of depression and anxiety. Learn about our recommended exercise regimens for mental wellness.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                
+                <!-- Blog Post 4 -->
+                <article class="blog-post">
+                    <div class="post-image">
+                        <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1173&q=80" alt="New Technology">
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span><i class="far fa-calendar"></i> September 28, 2025</span>
+                            <span><i class="far fa-user"></i> Dr. Michael Chen</span>
+                            <span><i class="far fa-folder"></i> Technology</span>
+                        </div>
+                        <h3>TGP Hospital Introduces AI-Assisted Diagnostic Technology</h3>
+                        <p class="post-excerpt">We've invested in cutting-edge AI technology that helps our radiologists detect abnormalities with 30% greater accuracy. This advancement represents our commitment to providing the highest standard of care.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                
+                <!-- Pagination -->
+                <div class="pagination">
+                    <a href="#" class="page-link active">1</a>
+                    <a href="#" class="page-link">2</a>
+                    <a href="#" class="page-link">3</a>
+                    <a href="#" class="page-link"><i class="fas fa-chevron-right"></i></a>
+                </div>
+            </div>
+            
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Search Widget -->
+                <div class="sidebar-widget">
+                    <h3>Search</h3>
+                    <div class="search-form">
+                        <input type="text" placeholder="Search articles...">
+                        <button class="btn btn-primary" style="width: 100%; margin-top: 10px;">Search</button>
+                    </div>
+                </div>
+                
+                <!-- Categories Widget -->
+                <div class="sidebar-widget">
+                    <h3>Categories</h3>
+                    <ul class="categories-list">
+                        <li><a href="#">Cardiology <span>(12)</span></a></li>
+                        <li><a href="#">Pediatrics <span>(8)</span></a></li>
+                        <li><a href="#">Neurology <span>(6)</span></a></li>
+                        <li><a href="#">Orthopedics <span>(9)</span></a></li>
+                        <li><a href="#">Preventive Care <span>(15)</span></a></li>
+                        <li><a href="#">Technology <span>(7)</span></a></li>
+                        <li><a href="#">Mental Health <span>(11)</span></a></li>
+                    </ul>
+                </div>
+                
+                <!-- Recent Posts Widget -->
+                <div class="sidebar-widget">
+                    <h3>Recent Posts</h3>
+                    <div class="recent-posts">
+                        <div class="recent-post">
+                            <div class="recent-post-image">
+                                <img src="https://images.unsplash.com/photo-1599045118108-bf9954418b76?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80" alt="Recent Post">
+                            </div>
+                            <div class="recent-post-content">
+                                <h4>Understanding and Managing Diabetes</h4>
+                                <span><i class="far fa-calendar"></i> Sept 20, 2025</span>
+                            </div>
+                        </div>
+                        
+                        <div class="recent-post">
+                            <div class="recent-post-image">
+                                <img src="https://images.unsplash.com/photo-1495653797063-114787b77b23?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Recent Post">
+                            </div>
+                            <div class="recent-post-content">
+                                <h4>5 Signs You Should See a Cardiologist</h4>
+                                <span><i class="far fa-calendar"></i> Sept 15, 2025</span>
+                            </div>
+                        </div>
+                        
+                        <div class="recent-post">
+                            <div class="recent-post-image">
+                                <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Recent Post">
+                            </div>
+                            <div class="recent-post-content">
+                                <h4>New Maternity Wing Now Open</h4>
+                                <span><i class="far fa-calendar"></i> Sept 10, 2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tags Widget -->
+                <div class="sidebar-widget">
+                    <h3>Tags</h3>
+                    <div class="tags-cloud">
+                        <span class="tag">Health</span>
+                        <span class="tag">Research</span>
+                        <span class="tag">Treatment</span>
+                        <span class="tag">Prevention</span>
+                        <span class="tag">Technology</span>
+                        <span class="tag">Nutrition</span>
+                        <span class="tag">Exercise</span>
+                        <span class="tag">Wellness</span>
+                        <span class="tag">Innovation</span>
+                    </div>
+                </div>
+                
+                <!-- Newsletter Widget -->
+                <div class="sidebar-widget">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter to get the latest health news and updates.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email Address">
+                        <button class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appointment CTA -->
+    <section class="appointment-cta">
+        <div class="container">
+            <h2>Need Medical Assistance?</h2>
+            <p>Our team of healthcare professionals is ready to help you with your health concerns.</p>
+            <a href="booking.html"><button class="btn btn-outline" style="background-color: white; color: var(--primary); margin-top: 30px;">Book an Appointment &nbsp; <i class="fa-regular fa-calendar-check"></i></button></a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>TGP Hospital</h3>
+                    <p>Providing quality healthcare with compassion and innovation since 1998.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="service.html">Our Services</a></li>
+                        <li><a href="doctors.html">Doctor Directory</a></li>
+                        <li><a href="login.html">Patient Portal</a></li>
+                        <li><a href="career.html">Careers</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="service.html">Emergency Care</a></li>
+                        <li><a href="service.html">Primary Care</a></li>
+                        <li><a href="service.html">Surgery</a></li>
+                        <li><a href="service.html">Maternity</a></li>
+                        <li><a href="service.html">Rehabilitation</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Medical Drive, Health City</li>
+                        <li><i class="fas fa-phone"></i> (+880) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> info@tgphospital.com</li>
+                        <li><i class="fas fa-clock"></i> Open 24/7</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 TGP Hospital. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./js/index.js"></script>
+</body>
+</html>

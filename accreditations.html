@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TGP Hospital - Accreditations</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #1a73e8;
+            --secondary: #34a853;
+            --accent: #f9345e;
+            --light: #f8f9fa;
+            --dark: #202124;
+            --text: #3c4043;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        body {
+            color: var(--text);
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            overflow-x: hidden;
+        }
+        a {
+            text-decoration: none;
+            text-underline-offset: none;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            position: relative;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+            transition: transform 0.5s;
+            cursor: pointer;
+            
+        }
+        
+        .logo i {
+            color: var(--primary);
+            font-size: 2rem;
+        }
+        .logo a {
+            text-decoration: none;
+            text-underline-offset: none;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        .nav-menu li{
+            
+            padding: 5px;
+        }
+        .nav-menu li:hover {
+            position: relative;
+            transform: scale(1.09);
+            transition: transform 0.1s;
+            border-radius: 5px;
+            background: #ddd6d681;
+            
+        }
+        
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--primary); 
+        }
+        
+        .header-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .mobile-actions {
+            display: none;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+            padding: 20px;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border-radius: 50px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #0d5bbb;
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+                /* Dropdown specific styles */
+        .nav-menu li.dropdown {
+            position: relative;
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            width: 200px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            padding: 10px 0;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-menu li {
+            padding: 0;
+            margin: 0;
+        }
+        
+        .dropdown-menu li:hover {
+            background: #f5f5f5;
+            transform: none;
+        }
+        
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 20px;
+            color: var(--text);
+            font-weight: 500;
+        }
+        
+        .dropdown-menu a:hover {
+            color: var(--primary);
+        }
+        
+        .dropdown > a::after {
+            content: '\f107';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            margin-left: 5px;
+            font-size: 0.9rem;
+        }
+        
+        /* Mobile Navigation */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--primary);
+            margin: 3px 0;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+        
+        /* Accreditations Hero Section */
+        .accreditations-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1586773860418-d37222d8fce3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1173&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        /* Accreditations Content */
+        .accreditations-content {
+            padding: 80px 0;
+        }
+        
+        .accreditations-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+        }
+        
+        .accreditations-intro h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .accreditations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .accreditation-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+            padding: 30px;
+        }
+        
+        .accreditation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .accreditation-logo {
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .accreditation-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .accreditation-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .accreditation-card p {
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+        
+        .accreditation-meta {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 20px;
+        }
+        
+        .accreditation-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .accreditation-meta i {
+            color: var(--primary);
+        }
+        
+        /* Accreditation Benefits */
+        .benefits-section {
+            background-color: var(--light);
+            padding: 80px 0;
+        }
+        
+        .benefits-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .benefit-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+            text-align: center;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .benefit-icon {
+            width: 70px;
+            height: 70px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        
+        .benefit-icon i {
+            color: white;
+            font-size: 1.8rem;
+        }
+        
+        .benefit-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        /* Process Section */
+        .process-section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--text);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .process-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .process-step {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        .step-content {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+            flex-grow: 1;
+        }
+        
+        .step-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        /* Quality Section */
+        .quality-section {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .quality-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 1.2rem;
+        }
+        
+        /* Appointment CTA */
+        .appointment-cta {
+            padding: 80px 0;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+        }
+        
+        .appointment-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .appointment-cta button:hover{
+            transform: perspective(100px) scale(1.05);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .process-step {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .step-number {
+                margin: 0 auto;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+                z-index: 1001;
+            }
+            
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 70%;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                background-color: white;
+                transition: right 0.3s ease;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                gap: 20px;
+                z-index: 999;
+                padding-top: 80px;
+            }
+            
+            .nav-menu.active {
+                right: 0;
+            }
+            
+            .header-actions.desktop-actions {
+                display: none;
+            }
+            
+            .mobile-actions {
+                display: flex;
+            }
+            
+            .overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+                z-index: 998;
+            }
+            
+            .overlay.active {
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .accreditation-logo {
+                height: 100px;
+            }
+            
+            .quality-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .quality-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .accreditation-meta {
+                flex-direction: column;
+                gap: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-hospital"></i>
+                <a href="index.html"><h1>TGP Hospital</h1></a>
+            </div>
+            
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="service.html">Services</a></li>
+                <li><a href="doctors.html">Doctors</a></li>
+                
+                <!-- About Us with dropdown -->
+                <li class="dropdown">
+                    <a href="about.html">About Us</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="history.html">Our History</a></li>
+                        <li><a href="mission&values.html">Mission & Values</a></li>
+                        <li><a href="leadershipTeam.html">Leadership Team</a></li>
+                        <li><a href="career.html">Careers</a></li>
+                        <li><a href="blog&news.html">Blog & News</a></li>
+                        <li><a href="research&Innovation.html">Research & Innovation</a></li>
+                        <li><a href="accreditations.html">Accreditations</a></li>
+                    </ul>
+                </li>
+                
+                <li><a href="contact.html">Contact</a></li>
+                
+                <div class="mobile-actions">
+                    <a href="login.html"><button class="btn btn-outline">Login</button></a>
+                    <a href="booking.html"><button class="btn btn-primary">Book Appointment</button></a>
+                </div>
+            </ul>
+            
+            <div class="header-actions desktop-actions">
+                <a href="login.html"><button class="btn btn-outline">Login</button></a>
+                <a href="booking.html"><button class="btn btn-primary">Book Appointment</button></a>
+            </div>
+        </div>
+        <div class="overlay"></div>
+    </header>
+
+    <!-- Accreditations Hero Section -->
+    <section class="accreditations-hero">
+        <div class="container hero-content">
+            <h2>Accreditations & Certifications</h2>
+            <p>Demonstrating our commitment to excellence in healthcare through rigorous quality standards</p>
+        </div>
+    </section>
+
+    <!-- Accreditations Content Section -->
+    <section class="accreditations-content">
+        <div class="container">
+            <div class="accreditations-intro">
+                <h2>Our Commitment to Quality</h2>
+                <p>TGP Hospital has earned numerous accreditations and certifications from leading healthcare organizations worldwide. These recognitions demonstrate our unwavering commitment to providing the highest standard of patient care, safety, and medical excellence.</p>
+            </div>
+            
+            <div class="accreditations-grid">
+                <!-- Accreditation 1 -->
+                <div class="accreditation-card">
+                    <div class="accreditation-logo">
+                        <img src="https://via.placeholder.com/180x80/1a73e8/ffffff?text=JCI" alt="JCI Accreditation">
+                    </div>
+                    <h3>Joint Commission International</h3>
+                    <p>JCI accreditation is the gold standard in global healthcare. We have maintained this prestigious accreditation since 2015, demonstrating our commitment to the highest international healthcare standards.</p>
+                    <div class="accreditation-meta">
+                        <span><i class="fas fa-award"></i> Accredited Since: 2015</span>
+                        <span><i class="fas fa-sync-alt"></i> Renewed: 2023</span>
+                    </div>
+                </div>
+                
+                <!-- Accreditation 2 -->
+                <div class="accreditation-card">
+                    <div class="accreditation-logo">
+                        <img src="https://via.placeholder.com/180x80/34a853/ffffff?text=ISO" alt="ISO Certification">
+                    </div>
+                    <h3>ISO 9001:2015 Certification</h3>
+                    <p>Our quality management system is certified to ISO 9001:2015 standards, ensuring consistent delivery of high-quality healthcare services and continuous improvement in all our processes.</p>
+                    <div class="accreditation-meta">
+                        <span><i class="fas fa-award"></i> Certified Since: 2012</span>
+                        <span><i class="fas fa-sync-alt"></i> Renewed: 2024</span>
+                    </div>
+                </div>
+                
+                <!-- Accreditation 3 -->
+                <div class="accreditation-card">
+                    <div class="accreditation-logo">
+                        <img src="https://via.placeholder.com/180x80/f9345e/ffffff?text=NABH" alt="NABH Accreditation">
+                    </div>
+                    <h3>NABH Accreditation</h3>
+                    <p>We are accredited by the National Accreditation Board for Hospitals & Healthcare Providers (NABH), India's highest standard for hospital quality and patient safety.</p>
+                    <div class="accreditation-meta">
+                        <span><i class="fas fa-award"></i> Accredited Since: 2018</span>
+                        <span><i class="fas fa-sync-alt"></i> Renewed: 2022</span>
+                    </div>
+                </div>
+                
+                <!-- Accreditation 4 -->
+                <div class="accreditation-card">
+                    <div class="accreditation-logo">
+                        <img src="https://via.placeholder.com/180x80/663399/ffffff?text=CAP" alt="CAP Accreditation">
+                    </div>
+                    <h3>CAP Accreditation</h3>
+                    <p>Our laboratory is accredited by the College of American Pathologists (CAP), meeting the highest standards of excellence in laboratory medicine and pathology services.</p>
+                    <div class="accreditation-meta">
+                        <span><i class="fas fa-award"></i> Accredited Since: 2016</span>
+                        <span><i class="fas fa-sync-alt"></i> Renewed: 2023</span>
+                    </div>
+                </div>
+                
+                <!-- Accreditation 5 -->
+                <div class="accreditation-card">
+                    <div class="accreditation-logo">
+                        <img src="https://via.placeholder.com/180x80/009688/ffffff?text=AAHRPP" alt="AAHRPP Accreditation">
+                    </div>
+                    <h3>AAHRPP Accreditation</h3>
+                    <p>We have earned full accreditation from the Association for the Accreditation of Human Research Protection Programs (AAHRPP), demonstrating our commitment to ethical research practices.</p>
+                    <div class="accreditation-meta">
+                        <span><i class="fas fa-award"></i> Accredited Since: 2019</span>
+                        <span><i class="fas fa-sync-alt"></i> Renewed: 2023</span>
+                    </div>
+                </div>
+                
+                <!-- Accreditation 6 -->
+                <div class="accreditation-card">
+                    <div class="accreditation-logo">
+                        <img src="https://via.placeholder.com/180x80/ff9800/ffffff?text=Baby-Friendly" alt="Baby-Friendly Initiative">
+                    </div>
+                    <h3>Baby-Friendly Hospital Initiative</h3>
+                    <p>We are designated as a Baby-Friendly hospital by WHO and UNICEF, recognizing our commitment to optimal infant feeding practices and mother-baby bonding.</p>
+                    <div class="accreditation-meta">
+                        <span><i class="fas fa-award"></i> Designated Since: 2020</span>
+                        <span><i class="fas fa-sync-alt"></i> Renewed: 2023</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Benefits of Our Accreditations</h2>
+                <p>Our certifications translate to tangible benefits for our patients and community</p>
+            </div>
+            
+            <div class="benefits-container">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h3>Higher Quality Care</h3>
+                    <p>Accreditation ensures we meet rigorous quality standards, resulting in better patient outcomes and safer care.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Enhanced Safety</h3>
+                    <p>Our certified safety protocols minimize risks and ensure a secure environment for patients and staff.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Continuous Improvement</h3>
+                    <p>Regular audits and assessments drive ongoing improvements in our services and patient care.</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>International Standards</h3>
+                    <p>Our accreditations align us with global best practices in healthcare delivery and management.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Accreditation Process</h2>
+                <p>Maintaining our certifications requires ongoing dedication and rigorous evaluation</p>
+            </div>
+            
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Self-Assessment</h3>
+                        <p>We continuously evaluate our practices against international standards, identifying areas for improvement.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Documentation Review</h3>
+                        <p>Accrediting bodies thoroughly examine our policies, procedures, and quality metrics.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>On-Site Evaluation</h3>
+                        <p>Surveyors conduct comprehensive on-site assessments, observing our practices and interviewing staff.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Continuous Improvement</h3>
+                        <p>We implement recommendations and continuously enhance our processes to maintain excellence.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quality Section -->
+    <section class="quality-section">
+        <div class="container">
+            <h2>Our Quality in Numbers</h2>
+            <p>Quantifiable evidence of our commitment to healthcare excellence</p>
+            
+            <div class="quality-stats">
+                <div class="stat-item">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Patient Satisfaction</div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-number">99.2%</div>
+                    <div class="stat-label">Patient Safety Score</div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-number">12</div>
+                    <div class="stat-label">International Accreditations</div>
+                </div>
+                
+                <div class="stat-item">
+                    <div class="stat-number">250+</div>
+                    <div class="stat-labelQuality Metrics Monitored" 
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appointment CTA -->
+    <section class="appointment-cta">
+        <div class="container">
+            <h2>Experience Accredited Healthcare</h2>
+            <p>Choose TGP Hospital for quality care that meets the highest international standards</p>
+            <a href="booking.html"><button class="btn btn-outline" style="background-color: white; color: var(--primary); margin-top: 30px;">Book an Appointment &nbsp; <i class="fa-regular fa-calendar-check"></i></button></a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>TGP Hospital</h3>
+                    <p>Providing quality healthcare with compassion and innovation since 1998.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="service.html">Our Services</a></li>
+                        <li><a href="doctors.html">Doctor Directory</a></li>
+                        <li><a href="login.html">Patient Portal</a></li>
+                        <li><a href="career.html">Careers</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="service.html">Emergency Care</a></li>
+                        <li><a href="service.html">Primary Care</a></li>
+                        <li><a href="service.html">Surgery</a></li>
+                        <li><a href="service.html">Maternity</a></li>
+                        <li><a href="service.html">Rehabilitation</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Medical Drive, Health City</li>
+                        <li><i class="fas fa-phone"></i> (+880) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> info@tgphospital.com</li>
+                        <li><i class="fas fa-clock"></i> Open 24/7</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 TGP Hospital. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Menu
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        const overlay = document.querySelector('.overlay');
+        const body = document.body;
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            overlay.classList.toggle('active');
+            body.style.overflow = body.style.overflow === 'hidden' ? '' : 'hidden';
+        });
+
+        overlay.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            body.style.overflow = '';
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                overlay.classList.remove('active');
+                body.style.overflow = '';
+            });
+        });
+
+        // Animation for accreditation cards on scroll
+        const accreditationCards = document.querySelectorAll('.accreditation-card');
+        
+        function checkScroll() {
+            accreditationCards.forEach(card => {
+                const cardPosition = card.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (cardPosition < screenPosition) {
+                    card.style.opacity = 1;
+                    card.style.transform = 'translateY(0)';
+                }
+            });
+        }
+        
+        // Initialize cards with hidden state
+        accreditationCards.forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        });
+        
+        // Check scroll position on load and scroll
+        window.addEventListener('load', checkScroll);
+        window.addEventListener('scroll', checkScroll);
+    </script>
+</body>
+</html>

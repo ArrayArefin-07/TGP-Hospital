@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers - TGP Hospital</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/career.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        :root {
+            --primary: #1a73e8;
+            --primary-dark: #0d5bbb;
+            --secondary: #34a853;
+            --accent: #f9345e;
+            --light: #f8f9fa;
+            --dark: #202124;
+            --text: #3c4043;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --gradient: linear-gradient(135deg, #1a73e8 0%, #34a853 100%);
+        }
+        body {
+            color: var(--text);
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            overflow-x: hidden;
+        }
+        a { text-decoration: none; }
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        header { background-color: white; box-shadow: var(--shadow); position: sticky; top: 0; z-index: 1000; }
+        .header-container { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; position: relative; }
+        .logo { display: flex; align-items: center; gap: 10px; }
+        .logo:hover { transform: scale(1.05); transition: transform 0.5s; cursor: pointer; }
+        .logo i { color: var(--primary); font-size: 2rem; }
+        .logo h1 { font-size: 1.8rem; color: var(--primary); }
+        .nav-menu { display: flex; list-style: none; gap: 30px; }
+        .nav-menu li{ padding: 5px; }
+        .nav-menu li:hover { position: relative; transform: scale(1.09); transition: transform 0.1s; border-radius: 5px; background: #ddd6d681; }
+        .nav-menu a { color: var(--text); font-weight: 500; }
+        .nav-menu a:hover { color: var(--primary); }
+        .header-actions { display: flex; gap: 15px; align-items: center; }
+        .mobile-actions { display: none; flex-direction: column; gap: 15px; width: 100%; padding: 20px; }
+        .btn { padding: 10px 20px; border-radius: 50px; border: none; font-weight: 600; cursor: pointer; transition: all 0.3s; text-align: center; }
+        .btn-primary { background-color: var(--primary); color: white; }
+        .btn-primary:hover { background-color: var(--primary-dark); }
+        .btn-outline { background-color: transparent; border: 2px solid var(--primary); color: var(--primary); }
+        .btn-outline:hover { background-color: var(--primary); color: white; }
+        .nav-menu li.dropdown { position: relative; }
+        .dropdown-menu { position: absolute; top: 100%; left: 0; background: white; width: 220px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.3s ease; z-index: 1000; padding: 10px 0; }
+        .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown-menu li { padding: 0; margin: 0; }
+        .dropdown-menu li:hover { background: #f5f5f5; transform: none; }
+        .dropdown-menu a { display: block; padding: 10px 20px; color: var(--text); font-weight: 500; }
+        .dropdown-menu a:hover { color: var(--primary); }
+        .hamburger { display: none; flex-direction: column; cursor: pointer; padding: 5px; }
+        .hamburger span { width: 25px; height: 3px; background-color: var(--primary); margin: 3px 0; transition: all 0.3s ease; border-radius: 2px; }
+        .page-hero { background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'); background-size: cover; background-position: center; color: white; padding: 100px 0; text-align: center; }
+        .page-hero-content { max-width: 800px; margin: 0 auto; }
+        .page-hero h1 { font-size: 3rem; margin-bottom: 20px; }
+        .page-hero p { font-size: 1.2rem; margin-bottom: 30px; }
+        .breadcrumb { display: flex; justify-content: center; margin-top: 20px; }
+        .breadcrumb a { color: #ddd; }
+        .breadcrumb span { margin: 0 10px; color: #ddd; }
+        .why-work-section { padding: 80px 0; background: white; }
+        .section-title { text-align: center; margin-bottom: 50px; }
+        .section-title h2 { font-size: 2.5rem; color: var(--dark); margin-bottom: 15px; }
+        .section-title p { color: var(--text); max-width: 700px; margin: 0 auto; }
+        .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
+        .benefit-card { background-color: var(--light); border-radius: 15px; padding: 30px; text-align: center; box-shadow: var(--shadow); transition: transform 0.3s; }
+        .benefit-card:hover { transform: translateY(-10px); }
+        .benefit-icon { width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; background: var(--gradient); color: white; font-size: 2rem; }
+        .benefit-card h3 { font-size: 1.5rem; margin-bottom: 15px; color: var(--dark); }
+        .benefit-card p { color: var(--text); }
+        /* Current Openings Section */
+        .openings-section { padding: 80px 0; background-color: var(--light); }
+        .filters { display: flex; justify-content: center; gap: 15px; margin-bottom: 20px; flex-wrap: wrap; align-items: center; }
+        .filters .filter-group { display: flex; gap: 10px; align-items: center; }
+        .filter-btn { padding: 10px 20px; background: white; border: 2px solid var(--primary); border-radius: 50px; color: var(--primary); cursor: pointer; transition: all 0.3s; }
+        .filter-btn.active, .filter-btn:hover { background: var(--primary); color: white; }
+        .jobs-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+        .job-card { background: white; border-radius: 15px; padding: 30px; box-shadow: var(--shadow); transition: transform 0.3s; }
+        .job-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); }
+        .job-card h3 { font-size: 1.5rem; margin-bottom: 10px; color: var(--dark); }
+        .job-meta { display: flex; gap: 15px; margin-bottom: 20px; color: var(--text); font-size: 0.9rem; }
+        .job-meta span { display: flex; align-items: center; gap: 5px; }
+        .job-card p { margin-bottom: 25px; color: var(--text); }
+        .job-tags { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+        .job-tag { padding: 5px 15px; background: var(--light); border-radius: 50px; font-size: 0.8rem; color: var(--primary); }
+        .no-results { text-align: center; grid-column: 1/-1; color: #666; }
+        .search-input { padding: 10px 15px; border-radius: 50px; border: 2px solid #e0e0e0; width: 260px; }
+        .search-input:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(26,115,232,0.08); }
+        .culture-section { padding: 80px 0; background: white; }
+        .culture-container { display: flex; align-items: center; gap: 50px; }
+        .culture-image { flex: 1; border-radius: 15px; overflow: hidden; box-shadow: var(--shadow); }
+        .culture-image img { width: 100%; height: auto; display: block; }
+        .culture-content { flex: 1; }
+        .culture-content h2 { font-size: 2.2rem; margin-bottom: 20px; color: var(--dark); }
+        .culture-content p { font-size: 1.1rem; line-height: 1.8; margin-bottom: 30px; }
+        .culture-list { list-style: none; }
+        .culture-list li { margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+        .culture-list i { color: var(--secondary); font-size: 1.2rem; }
+        .process-section { padding: 80px 0; background-color: var(--light); }
+        .process-steps { display: flex; justify-content: space-between; margin-top: 50px; position: relative; }
+        .process-steps::before { content: ''; position: absolute; top: 40px; left: 0; right: 0; height: 3px; background: var(--primary); z-index: 1; }
+        .process-step { text-align: center; position: relative; z-index: 2; flex: 1; }
+        .step-number { width: 80px; height: 80px; border-radius: 50%; background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; margin: 0 auto 20px; }
+        .process-step h3 { font-size: 1.3rem; margin-bottom: 15px; color: var(--dark); }
+        .cta-section { padding: 80px 0; background: var(--gradient); color: white; text-align: center; }
+        .cta-content { max-width: 800px; margin: 0 auto; }
+        .cta-content h2 { font-size: 2.5rem; margin-bottom: 20px; }
+        .cta-content p { font-size: 1.2rem; margin-bottom: 30px; }
+        .cta-buttons { display: flex; justify-content: center; gap: 15px; margin-top: 30px; }
+        .btn-white { background-color: white; color: var(--primary); }
+        .btn-transparent { background-color: transparent; border: 2px solid white; color: white; }
+        footer { background-color: var(--dark); color: white; padding: 60px 0 30px; }
+        .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-column h3 { font-size: 1.3rem; margin-bottom: 20px; color: white; }
+        .footer-column ul { list-style: none; }
+        .footer-column ul li { margin-bottom: 10px; }
+        .footer-column a { color: #ddd; text-decoration: none; transition: color 0.3s; }
+        .social-links { display: flex; gap: 15px; margin-top: 20px; }
+        .social-links a { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.1); color: white; transition: background-color 0.3s; }
+        .copyright { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+        /* Responsive Styles */
+        @media (max-width: 992px) { .culture-container { flex-direction: column; } .process-steps { flex-direction: column; gap: 40px; } .process-steps::before { display: none; } .page-hero h1 { font-size: 2.5rem; } }
+        @media (max-width: 768px) {
+            .hamburger { display: flex; z-index: 1001; }
+            .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+            .hamburger.active span:nth-child(2) { opacity: 0; }
+            .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
+            .nav-menu { position: fixed; top: 0; right: -100%; height: 100vh; width: 70%; flex-direction: column; justify-content: flex-start; align-items: center; background-color: white; transition: right 0.3s ease; box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1); gap: 20px; z-index: 999; padding-top: 80px; }
+            .nav-menu.active { right: 0; }
+            .header-actions.desktop-actions { display: none; }
+            .mobile-actions { display: flex; }
+            .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 998; }
+            .overlay.active { opacity: 1; visibility: visible; }
+            .cta-buttons { flex-direction: column; align-items: center; }
+            .filters { flex-direction: column; align-items: center; }
+            .search-input { width: 100%; max-width: 320px; }
+        }
+        /* Mobile dropdown */
+        @media (max-width: 768px) {
+            .dropdown-menu { position: static; opacity: 1; visibility: visible; transform: none; box-shadow: none; width: 100%; display: none; background: #f9f9f9; padding-left: 20px; }
+            .dropdown.active .dropdown-menu { display: block; }
+            .dropdown > a::after { content: '\f107'; float: right; transition: transform 0.3s; font-family: 'Font Awesome 6 Free'; font-weight: 900; }
+            .dropdown.active > a::after { transform: rotate(180deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-hospital"></i>
+                <a href="index.html"><h1>TGP Hospital</h1></a>
+            </div>
+            <div class="hamburger" aria-label="Toggle menu" role="button">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" role="navigation">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="service.html">Services</a></li>
+                <li><a href="doctors.html">Doctors</a></li>
+                <li class="dropdown">
+                    <a href="about.html">About Us</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="history.html">Our History</a></li>
+                        <li><a href="mission&values.html">Mission & Values</a></li>
+                        <li><a href="about.html#leadership">Leadership Team</a></li>
+                        <li><a href="career.html">Careers</a></li>
+                        <li><a href="blog&news.html">Blog & News</a></li>
+                        <li><a href="research&Innovation.html">Research & Innovation</a></li>
+                        <li><a href="accreditations.html">Accreditations</a></li>
+                    </ul>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+                <div class="mobile-actions">
+                    <a href="login.html"><button class="btn btn-outline">Login</button></a>
+                    <a href="booking.html"><button class="btn btn-primary">Book Appointment</button></a>
+                </div>
+            </ul>
+            <div class="header-actions desktop-actions">
+                <a href="login.html"><button class="btn btn-outline">Login</button></a>
+                <a href="booking.html"><button class="btn btn-primary">Book Appointment</button></a>
+            </div>
+        </div>
+        <div class="overlay"></div>
+    </header>
+
+    <!-- Page Hero Section -->
+    <section class="page-hero">
+        <div class="container page-hero-content">
+            <h1>Join Our Team</h1>
+            <p>Build a rewarding career while making a difference in people's lives at TGP Hospital</p>
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <a href="about.html">About Us</a>
+                <span>/</span>
+                <a href="career.html">Careers</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Work With Us Section -->
+    <section class="why-work-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Work at TGP Hospital?</h2>
+                <p>We're committed to creating an environment where our team members can thrive both personally and professionally.</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <h3>Professional Growth</h3>
+                    <p>We invest in our employees' development with continuous learning opportunities, training programs, and tuition reimbursement.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-heart"></i></div>
+                    <h3>Make a Difference</h3>
+                    <p>Join a team dedicated to improving lives and making a positive impact on our community's health and well-being.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-users"></i></div>
+                    <h3>Collaborative Culture</h3>
+                    <p>Work alongside talented professionals in a supportive environment that values teamwork and shared success.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-award"></i></div>
+                    <h3>Competitive Benefits</h3>
+                    <p>We offer comprehensive health coverage, retirement plans, paid time off, and other valuable benefits.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-balance-scale"></i></div>
+                    <h3>Work-Life Balance</h3>
+                    <p>We understand the importance of balancing your career with your personal life and offer flexible scheduling options.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>State-of-the-Art Facilities</h3>
+                    <p>Work with the latest medical technology and equipment in modern, well-maintained facilities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Current Openings Section -->
+    <section id="openings" class="openings-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Current Openings</h2>
+                <p>Explore opportunities to join our dedicated healthcare team</p>
+            </div>
+
+            <div class="filters" aria-label="Job filters">
+                <div class="filter-group" role="tablist" aria-label="Job categories">
+                    <button class="filter-btn active" data-filter="all" aria-pressed="true">All Positions</button>
+                    <button class="filter-btn" data-filter="medical" aria-pressed="false">Medical</button>
+                    <button class="filter-btn" data-filter="nursing" aria-pressed="false">Nursing</button>
+                    <button class="filter-btn" data-filter="administrative" aria-pressed="false">Administrative</button>
+                    <button class="filter-btn" data-filter="technical" aria-pressed="false">Technical</button>
+                </div>
+
+                <div style="margin-left:10px;">
+                    <input id="job-search" class="search-input" type="search" placeholder="Search jobs, skills, locations..." aria-label="Search jobs">
+                </div>
+            </div>
+
+            <div class="jobs-container" aria-live="polite">
+                <!-- Each job-card has data-category (space separated categories) and data-tags for search -->
+                <div class="job-card" data-category="nursing medical" data-tags="BSN ICU critical care 2 years">
+                    <h3>Registered Nurse - ICU</h3>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Critical Care Unit</span>
+                        <span><i class="fas fa-clock"></i> Full-Time</span>
+                    </div>
+                    <p>Provide specialized nursing care to critically ill patients in our state-of-the-art Intensive Care Unit.</p>
+                    <div class="job-tags">
+                        <span class="job-tag">BSN Required</span>
+                        <span class="job-tag">2+ Years Experience</span>
+                    </div>
+                    <a href="#" class="btn btn-primary">Apply Now</a>
+                </div>
+
+                <div class="job-card" data-category="technical" data-tags="laboratory ASCP 1 year lab technician">
+                    <h3>Medical Laboratory Technician</h3>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Laboratory</span>
+                        <span><i class="fas fa-clock"></i> Full-Time</span>
+                    </div>
+                    <p>Perform complex medical laboratory tests for diagnosis, treatment, and prevention of disease.</p>
+                    <div class="job-tags">
+                        <span class="job-tag">ASCP Certification</span>
+                        <span class="job-tag">1+ Years Experience</span>
+                    </div>
+                    <a href="#" class="btn btn-primary">Apply Now</a>
+                </div>
+
+                <div class="job-card" data-category="medical" data-tags="physical therapist DPT part-time">
+                    <h3>Physical Therapist</h3>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Rehabilitation</span>
+                        <span><i class="fas fa-clock"></i> Part-Time</span>
+                    </div>
+                    <p>Help patients improve their mobility and manage pain through customized treatment plans.</p>
+                    <div class="job-tags">
+                        <span class="job-tag">DPT Required</span>
+                        <span class="job-tag">License Required</span>
+                    </div>
+                    <a href="#" class="btn btn-primary">Apply Now</a>
+                </div>
+
+                <div class="job-card" data-category="technical administrative" data-tags="IT support healthcare CompTIA A+ systems networking">
+                    <h3>IT Support Specialist</h3>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> IT Department</span>
+                        <span><i class="fas fa-clock"></i> Full-Time</span>
+                    </div>
+                    <p>Provide technical support and maintain healthcare information systems and hardware.</p>
+                    <div class="job-tags">
+                        <span class="job-tag">Healthcare IT Experience</span>
+                        <span class="job-tag">CompTIA A+</span>
+                    </div>
+                    <a href="#" class="btn btn-primary">Apply Now</a>
+                </div>
+
+                <div class="job-card" data-category="administrative" data-tags="reception EMR scheduling customer service">
+                    <h3>Medical Receptionist</h3>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Front Desk</span>
+                        <span><i class="fas fa-clock"></i> Full-Time</span>
+                    </div>
+                    <p>Greet patients, schedule appointments, and handle administrative tasks in our busy clinic.</p>
+                    <div class="job-tags">
+                        <span class="job-tag">Customer Service</span>
+                        <span class="job-tag">EMR Experience</span>
+                    </div>
+                    <a href="#" class="btn btn-primary">Apply Now</a>
+                </div>
+
+                <div class="job-card" data-category="medical" data-tags="physician ER emergency board certified">
+                    <h3>Emergency Room Physician</h3>
+                    <div class="job-meta">
+                        <span><i class="fas fa-map-marker-alt"></i> Emergency Department</span>
+                        <span><i class="fas fa-clock"></i> Full-Time</span>
+                    </div>
+                    <p>Provide urgent medical care to patients in our 24/7 emergency department.</p>
+                    <div class="job-tags">
+                        <span class="job-tag">Board Certified</span>
+                        <span class="job-tag">ER Experience</span>
+                    </div>
+                    <a href="#" class="btn btn-primary">Apply Now</a>
+                </div>
+
+            </div>
+
+            <p id="no-results" class="no-results" style="display:none;">No positions found. Try a different filter or search term.</p>
+
+        </div>
+    </section>
+
+    <!-- Culture Section -->
+    <section class="culture-section">
+        <div class="container">
+            <div class="culture-container">
+                <div class="culture-image">
+                    <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80" alt="TGP Hospital Team">
+                </div>
+                <div class="culture-content">
+                    <h2>Our Workplace Culture</h2>
+                    <p>At TGP Hospital, we believe that our team is our greatest asset. We foster an inclusive, supportive environment where every team member is valued and respected.</p>
+                    <ul class="culture-list">
+                        <li><i class="fas fa-check-circle"></i> Collaborative, team-based approach to patient care</li>
+                        <li><i class="fas fa-check-circle"></i> Ongoing professional development opportunities</li>
+                        <li><i class="fas fa-check-circle"></i> Emphasis on work-life balance and employee wellness</li>
+                        <li><i class="fas fa-check-circle"></i> Recognition programs that celebrate achievements</li>
+                        <li><i class="fas fa-check-circle"></i> Open communication and transparent leadership</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Process Section -->
+    <section class="process-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Application Process</h2>
+                <p>We've designed our hiring process to be straightforward and transparent</p>
+            </div>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Submit Application</h3>
+                    <p>Complete our online application form and upload your resume</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Phone Screening</h3>
+                    <p>Brief conversation with our HR team to discuss your qualifications</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Interviews</h3>
+                    <p>Meet with hiring managers and potential team members</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>Offer & Onboarding</h3>
+                    <p>Receive your offer and begin our comprehensive orientation process</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Join Our Team?</h2>
+                <p>If you're passionate about healthcare and making a difference in people's lives, we'd love to hear from you. Explore our current openings or submit a general application.</p>
+                <div class="cta-buttons">
+                    <a href="#openings"><button class="btn btn-white">View All Openings</button></a>
+                    <a href="#"><button class="btn btn-transparent">Submit General Application</button></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>TGP Hospital</h3>
+                    <p>Providing quality healthcare with compassion and innovation since 1998.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="service.html">Our Services</a></li>
+                        <li><a href="doctors.html">Doctor Directory</a></li>
+                        <li><a href="login.html">Patient Portal</a></li>
+                        <li><a href="career.html">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="service.html">Emergency Care</a></li>
+                        <li><a href="service.html">Primary Care</a></li>
+                        <li><a href="service.html">Surgery</a></li>
+                        <li><a href="service.html">Maternity</a></li>
+                        <li><a href="service.html">Rehabilitation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Medical Drive, Health City</li>
+                        <li><i class="fas fa-phone"></i> (+880) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> info@tgphospital.com</li>
+                        <li><i class="fas fa-clock"></i> Open 24/7</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 TGP Hospital. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Menu
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        const overlay = document.querySelector('.overlay');
+        const body = document.body;
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            overlay.classList.toggle('active');
+            body.style.overflow = body.style.overflow === 'hidden' ? '' : 'hidden';
+        });
+
+        overlay.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            body.style.overflow = '';
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                overlay.classList.remove('active');
+                body.style.overflow = '';
+            });
+        });
+
+        // Mobile dropdown functionality (works on resize too)
+        function setupDropdowns() {
+            const dropdowns = document.querySelectorAll('.dropdown');
+            dropdowns.forEach(dropdown => {
+                const link = dropdown.querySelector('a');
+                // Remove previous handlers to avoid duplicates
+                link.onclick = null;
+                link.addEventListener('click', function(e) {
+                    // Only toggle on small screens
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        dropdown.classList.toggle('active');
+                    }
+                });
+            });
+            // Close dropdowns when clicking elsewhere
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.dropdown')) {
+                    document.querySelectorAll('.dropdown.active').forEach(item => {
+                        item.classList.remove('active');
+                    });
+                }
+            });
+        }
+
+        window.addEventListener('resize', setupDropdowns);
+        document.addEventListener('DOMContentLoaded', setupDropdowns);
+
+        // Job filtering + search functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const jobCards = document.querySelectorAll('.job-card');
+        const searchInput = document.getElementById('job-search');
+        const noResults = document.getElementById('no-results');
+
+        function normalizeText(str){
+            return (str || '').toString().trim().toLowerCase();
+        }
+
+        function filterJobs(selectedFilter = 'all', searchTerm = ''){
+            const term = normalizeText(searchTerm);
+            let visibleCount = 0;
+
+            jobCards.forEach(card => {
+                const categories = normalizeText(card.dataset.category).split(/\s+/).filter(Boolean);
+                const tags = normalizeText(card.dataset.tags || '');
+                const title = normalizeText(card.querySelector('h3')?.textContent || '');
+                const desc = normalizeText(card.querySelector('p')?.textContent || '');
+
+                const categoryMatch = (selectedFilter === 'all') || categories.includes(selectedFilter);
+                const searchMatch = term === '' || (title + ' ' + desc + ' ' + tags).indexOf(term) !== -1;
+
+                if (categoryMatch && searchMatch) {
+                    card.style.display = '';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            if (visibleCount === 0) {
+                noResults.style.display = 'block';
+            } else {
+                noResults.style.display = 'none';
+            }
+        }
+
+        // Wire up filter buttons
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Update ARIA pressed state
+                filterButtons.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed','false'); });
+                button.classList.add('active');
+                button.setAttribute('aria-pressed','true');
+
+                const filter = button.dataset.filter;
+                filterJobs(filter, searchInput.value);
+            });
+        });
+
+        // Search input
+        let searchTimeout;
+        searchInput.addEventListener('input', (e) => {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                const activeBtn = document.querySelector('.filter-btn.active');
+                const filter = activeBtn ? activeBtn.dataset.filter : 'all';
+                filterJobs(filter, e.target.value);
+            }, 150);
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            filterJobs('all', '');
+        });
+    </script>
+
+    <script src="./js/career.js"></script>
+</body>
+</html>
