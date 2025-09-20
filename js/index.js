@@ -102,3 +102,44 @@
                 showTestimonial(currentTestimonial + 1);
             }, 3000);
         }
+        
+
+        // // Neon Cursor Effect
+        // document.addEventListener('DOMContentLoaded', function() {
+        //     const cursor = document.querySelector('.neon-cursor');
+            
+        //     if (cursor) {
+        //         // Make cursor visible when page loads
+        //         setTimeout(() => {
+        //             cursor.classList.add('active');
+        //         }, 100);
+                
+        //         // Update cursor position
+        //         document.addEventListener('mousemove', (e) => {
+        //             cursor.style.left = e.clientX + 'px';
+        //             cursor.style.top = e.clientY + 'px';
+        //         });
+                
+        //         // Add hover effect to clickable elements
+        //         const clickableElements = document.querySelectorAll('a, button, .service-card, .doctor-card, .testimonial, input, select, textarea');
+                
+        //         clickableElements.forEach(element => {
+        //             element.addEventListener('mouseenter', () => {
+        //                 cursor.classList.add('hover');
+        //             });
+                    
+        //             element.addEventListener('mouseleave', () => {
+        //                 cursor.classList.remove('hover');
+        //             });
+        //         });
+                
+        //         // Hide cursor when leaving window
+        //         document.addEventListener('mouseleave', () => {
+        //             cursor.style.opacity = '0';
+        //         });
+                
+        //         document.addEventListener('mouseenter', () => {
+        //             cursor.style.opacity = '1';
+        //         });
+        //     }
+        // });
