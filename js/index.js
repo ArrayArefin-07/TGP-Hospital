@@ -63,12 +63,12 @@
         });
 
         // Appointment button functionality
-        const appointmentBtns = document.querySelectorAll('.btn-primary');
-        appointmentBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                alert('Thank you for choosing HospitalX! Our appointment booking system is loading...');
-            });
-        });
+        // const appointmentBtns = document.querySelectorAll('.btn-primary');
+        // appointmentBtns.forEach(btn => {
+        //     btn.addEventListener('click', function() {
+        //         alert('Thank you for choosing TGP Hospital! Our appointment booking system is loading...');
+        //     });
+        // });
         
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
